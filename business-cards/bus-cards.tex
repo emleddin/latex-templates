@@ -1,0 +1,168 @@
+%% Loosely based off of https://github.com/aorthey/business-cards-latex and 
+%% https://www.overleaf.com/latex/templates/business-card-for-programmers-slash-developers-with-photo/wymnjgtxkdwh
+%%
+
+%% Letter paper is used for US 8.5x11 in
+%% Otherwise, A4 is assumed
+\documentclass[11pt,letterpaper]{article}
+%% Toggle the geometry commands for portrait or landscape
+\usepackage[portrait,margin=0.25in]{geometry}
+%\usepackage[landscape,margin=0.25in]{geometry}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{ifthen}
+
+%% Don't hyphenate words
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%% For Computer Modern sans serif font
+%\usepackage{sansmathfonts} % If using math
+\renewcommand{\familydefault}{\sfdefault}	
+%\urlstyle{same}
+
+%% Define card dimensions
+\newlength{\CardWidth}
+\newlength{\CardHeight}
+
+%% Define counter for repetitive card-generating command
+\newcounter{ct}
+
+%% Define unique colors
+\definecolor{MyColor}{RGB}{237, 29, 36}
+
+%% Color smaller bullet symbol
+\newcommand{\cbull}{\textcolor{MyColor}\textbullet{} }
+
+
+%------------------------------------------------------------------------%
+%-------------------- CARD INFO HERE -------------------------%
+%------------------------------------------------------------------------%
+\newcommand{\name}{Phil Coulson}
+\newcommand{\joborg}{SHIELD}
+\newcommand{\jobinfo}{Director \\ Avengers Initiative}
+\newcommand{\keywords}{martial arts \cbull interrogation \cbull Spanish fluency}
+\newcommand{\pronouns}{he/him/his}
+\newcommand{\myemail}{PhilCoulson@shield.org}
+\newcommand{\twitter}{@CoulsonDirector}
+\newcommand{\ORCID}{0000-0000-1234-5678}
+%\newcommand{\phone}{1(234) 467-8910}
+\newcommand{\website}{github.com/agentpcoulson}
+
+%% Card dimensions
+%% 2 x 3.5 in is US standard
+%% 55 x 85 mm in is UK standard
+\setlength{\CardWidth}{3.5in}
+\setlength{\CardHeight}{2in}
+
+%% Format Card Grid
+%% CardCols == number of columns of cards
+%% CardRows == number of rows of cards
+\newcommand{\CardCols}{2}
+\newcommand{\CardRows}{5}
+
+%------------------------------------------------------------------------%
+%------------------------ CARD IMAGES -------------------------%
+%------------------------------------------------------------------------%
+\newcommand{\OrgLogo}{\includegraphics[width=0.8\linewidth]{images/Marvel_logo.png}}
+\newcommand{\ContextImage}{\includegraphics[width=\linewidth]{images/shield_logo.jpg}}
+
+% --------------------------------------------------------------------------------------%
+% Only change past this point if you want to alter card appearance %
+% --------------------------------------------------------------------------------------%
+
+%------------------------------------------------------------------------%
+%----------------------- ARRANGE CARD -----------------------%
+%------------------------------------------------------------------------%
+\newcommand{\singlecard}[1]{
+   \begin{minipage}[c]{\tcbtextwidth}
+	% Name and job org blocks
+	\begin{minipage}[b]{2in}
+		\vspace{-0mm}%
+		\textbf{\large{\name}} \\
+		\joborg
+	\end{minipage}
+	\begin{minipage}[b]{1in}
+		\vspace{-0mm}%
+		\begin{flushright}
+			\OrgLogo
+		\end{flushright}
+		\end{minipage} \\
+	\rule[4pt]{3.2in}{0.2mm} \\
+	% Image and contact blocks
+	\begin{minipage}[c]{0.7in}
+		\vspace{-0mm}%
+		\ContextImage
+	\end{minipage}
+	\hspace{1mm}
+	\begin{minipage}[c]{2.7in}
+		\vspace{-0mm}%
+		\begin{flushleft}
+			\small{\jobinfo} \\
+			{%
+			\begingroup
+			\setlength{\tabcolsep}{2pt}
+			\begin{tabular}{rl}
+				{\color{MyColor}Pronouns:} & \pronouns \\
+				{\color{MyColor}Email:} & \myemail \\
+				{\color{MyColor}Twitter:} & \twitter \\
+				{\color{MyColor}ORCID:} & \ORCID \\
+%				{\color{MyColor}Phone:} & \phone \\
+				{\color{MyColor}Site:} & \website 
+			\end{tabular}
+			\endgroup
+			}
+		\end{flushleft}
+	\end{minipage} \\
+	\rule{3.2in}{0.2mm} \\
+	% Keywords
+	\centerline{\small {\keywords}}
+	\end{minipage}
+}
+
+%% Determine total number of cards
+\def\cards{\numexpr \CardCols * \CardRows \relax}
+\newcommand{\cardsloop}{\numexpr \cards+1 \relax}
+
+%------------------------------------------------------------------------%
+%---------------------- DOC STARTS HERE  -------------------%
+%------------------------------------------------------------------------%
+\begin{document}
+
+%% Use tcolorbox itemize to make a grid for the individual cards
+\begin{tcbitemize}[%
+    raster columns=\CardCols,
+    raster rows=\CardRows,
+     raster height=\CardRows\CardHeight,
+    raster width=\CardCols\CardWidth,
+    raster equal height=rows,
+    enhanced,
+    sharp corners,
+    valign=center,
+    colframe=black,
+    colback=white,
+    raster equal skip=0pt,
+    raster row skip=0pt,
+    raster column skip=0pt,
+    toprule=0.25mm,
+    bottomrule=0.25mm,
+    leftrule=0.25mm,
+    rightrule=0.25mm,
+]
+%\tcbitem \singlecard \\
+
+%% Repeat single card pattern for all cards in defined grid
+\setcounter{ct}{1}
+\whiledo {\value{ct} < \cardsloop}%
+{%
+  \tcbitem \singlecard \\
+  \stepcounter {ct}%
+}
+
+\end{tcbitemize}
+
+\end{document}
