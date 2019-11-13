@@ -25,6 +25,9 @@
 \renewcommand{\familydefault}{\sfdefault}	
 %\urlstyle{same}
 
+%% Remove page number
+\pagestyle{empty}
+
 %% Define card dimensions
 \newlength{\CardWidth}
 \newlength{\CardHeight}
@@ -137,7 +140,7 @@
 \begin{tcbitemize}[%
     raster columns=\CardCols,
     raster rows=\CardRows,
-     raster height=\CardRows\CardHeight,
+    raster height=\CardRows\CardHeight,
     raster width=\CardCols\CardWidth,
     raster equal height=rows,
     enhanced,
