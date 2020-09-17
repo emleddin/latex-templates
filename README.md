@@ -9,7 +9,9 @@ these subfolders in a directory with a similar structure. Thus, if you intend
 to work on [Overleaf](https://www.overleaf.com/), create a subfolder with the
 same title and include the images.
 
+- `basic-document`: A document with some of my favorite/most-used options.
 - `business-cards`: Sample business cards.
+- `horizonatal-poster`: Sample horizontal 48x36in research poster.
 - `lookalike-article-pub`: A template to recreate the formatting of a journal
 article. It *should not* be use to submit to a journal.
 - `lookalike-comm-pub`: A template to recreate the formatting of a journal
@@ -18,3 +20,4 @@ communication. It *should not* be use to submit to a journal.
 (or supplemental) information of a publication.
 It could potentially be used to submit to a journal, if you really wanted, as
 the SI requirements are often less strict.
+- `vertical-poster`: Sample vertical 36x48in research poster.

@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1.0in, headheight=15pt, headsep=12pt]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx} %images
+% \usepackage{wrapfig, framed}
+\usepackage{float}
+% \usepackage[labelfont=bf,font=small,skip=0pt]{caption}
+\usepackage[euler]{textgreek}
+\usepackage[separate-uncertainty=true, multi-part-units=single]{siunitx}
+% \usepackage[version=4]{mhchem}
+\usepackage{setspace}
+\usepackage{color,soul} %% To highlight what to fix
+\usepackage[most]{tcolorbox} %% For image frame
+\usepackage{titlesec} %% Better section titles
+\usepackage[backend=biber,style = chem-acs]{biblatex}
+%\usepackage{hyperref}
+
+%% To break up URLs with hyphens
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+% To add period after section number in TOC
+\renewcommand{\thesection}{\arabic{section}.}
+% Period subsection number TOC
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Period subsubsection number TOC
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
+%% Change font size of sections
+% \fontsize{size}{baselineskip}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{12}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12}{12}\bfseries}{\thesubsection}{1em}{}
+
+% %% Change spacing around sections
+% \titlespacing*{hcommandi}{hlefti}{hbefore-sepi}{hafter-sepi}[hright-sepi]
+% \titlespacing*{\section}{0pt}{0.75\baselineskip}{0.1\baselineskip}
+% \titlespacing*{\subsection}{0pt}{0.75\baselineskip}{0.1\baselineskip}
+% \titlespacing*{\subsubsection}{0pt}{0.75\baselineskip}{0.1\baselineskip}
+\titlespacing*{\section}{0pt}{0.45\baselineskip}{0.1\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.45\baselineskip}{0.1\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{0.45\baselineskip}{0.1\baselineskip}
+
+
+%Change to sans serif font
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{sansmathfonts}
+
+%% Use Helvetica
+%\usepackage[scaled=.92]{helvet}
+
+\graphicspath{{images/}}
+
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\Calorie}{\kilo\calorie}
+\DeclareSIUnit{\atm}{atm}
+\sisetup{per-mode=symbol}
+\sisetup{range-phrase=--}
+
+%% URLs
+\urlstyle{same}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{J. Doe}
+\fancyhead[R]{Special Assignment}
+\fancyfoot[C]{\thepage}
+
+% Specify header height
+% \setlength{\headheight}{15pt}
+
+%% Remove word hyphenation with high tolerances
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%% Fix vertical spacing
+%\setlength{\parskip}{8pt}
+
+%% Counters
+%\newcounter{mycounter}
+
+%% Create a new tcolorbox type to frame image
+\tcbuselibrary{skins}
+\newtcolorbox[auto counter]{imbox}[2][]{%
+colframe=black, lower separated=false,
+colback=white, enhanced, #1,
+}
+
+%% Use \autocite for superscript numbering
+%\bibliography{mybiblio}
+
+\begin{document}
+
+\clearpage
+\singlespacing
+%----------------------------- Start Paper -----------------------%
+
+%% Title
+\centerline{\textbf{A Title To End All Titles}}
+%%
+\vspace*{0.2\baselineskip}
+\section{My First Section}
+Words words words words words.
+
+
+%% Use a tcolorbox to have a box around image and caption
+\begin{imbox}[label=fig:myfigname]{}
+\includegraphics[width=\textwidth]{example-image-a}
+\tcblower
+\vspace{-12pt}
+\textbf{Figure \thetcbcounter}: A description of yet another gray box.
+\end{imbox}
+%% End fig
+
+\vspace*{-0.2\baselineskip}
+\section{Another Section}
+More words.
+
+%% Stuff for bibliography (if you have it
+%\newpage
+
+%\printbibliography
+
+\end{document}
