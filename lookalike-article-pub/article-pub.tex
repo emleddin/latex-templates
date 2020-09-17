@@ -1,0 +1,229 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%											Preamble Start											   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[9.5pt,twocolumn]{article}
+\usepackage[margin=1in]{geometry}		%% Adjusts the page set-up
+\usepackage{enumerate} 				%% Allows for numbered lists
+\usepackage{color}					%% Gives colors for text and coding
+\usepackage{tcolorbox}				%% Gives colored tables and colors the abstract
+\usepackage{colortbl}				%% Allows table cells to be colored
+\usepackage{titlesec}				%% Allows for more title and section heading options
+\usepackage{etoolbox}				%% This is used to left-align the title
+\usepackage[utf8]{inputenc}			%% Sets the unicode-8 font input encoding
+\usepackage[T1]{fontenc}				%% Sets the font export stuff. Needed for proper PDF copy/paste.
+\usepackage [english]{babel}			%% Sets the language
+\usepackage [autostyle, english = american]{csquotes}	%% Allows you to use normal quotation marks instead of `` and ''
+\usepackage{amsmath}				%% Enables American math
+%\usepackage{amssymb}				%% Enables American math symbols, cannot be used with math design package
+\usepackage{siunitx} 				%% Enables scientific notation
+\usepackage{setspace} 				%% Used to specify line spacing
+\usepackage{empheq} 				%% Can be used to created boxed equations
+\usepackage{textcomp} 				%% Allows for the use of the copyright symbol with \textcopyright
+\usepackage{textgreek}                              %% Greek letters
+\usepackage[labelfont=bf]{caption} 		%% Fixes captions and makes the labels bold
+\usepackage{tikz} 					%% Create S Circle for supporting information (part 1)
+\usepackage[superscript,biblabel]{cite} 	%% Superscripts citations
+\usepackage{graphicx} 				%% Enables images to be inserted
+\usepackage{hyperref}				%% Creates hyperlink references to specific sections/figures in PDF/hyperlinked email
+
+%% I've defined a few colors here that make this look like an ACS journal article. You can swap jblue with TrumanPurple.
+\definecolor{jbeige}{HTML}{fef3d2}
+\definecolor{jhrule}{HTML}{8294cb}
+\definecolor{jblue}{HTML}{0455a6}
+\definecolor{TrumanPurple}{HTML}{510b76}
+\definecolor{UNTgreen}{HTML}{00853E}
+
+%% This line sets up the color box used in the abstract, including the blue lines.
+\tcbset{width=\textwidth, boxrule=0pt, toprule=0.4mm, bottomrule=0.4mm, 
+bottomtitle=0.4mm, colback=jbeige, colframe=jhrule, left=0pt, right=0pt, 
+boxsep=5pt,sharp corners=all}
+
+%% Specifies that all images are saved in the same folder where this file is saved
+\graphicspath{ { } }
+
+%% This adds a dot to the title/section numbering
+\titlelabel{\thetitle.\quad}
+
+%% These commands set the font for the section and subsection in normal text font size.
+\titleformat{\section}{\normalfont\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{1em}{}
+
+%% These specify how numbers appear in references
+\makeatletter
+\renewcommand\@biblabel[1]{(#1)}
+\makeatother
+
+%% This line renames the references section
+\addto\captionsenglish{\renewcommand{\refname}{\textcolor{jblue}{$\blacksquare$ REFERENCES\vspace{-0.2cm}}}}
+
+%% Specifies that the title, author, and affiliation will be left-aligned
+\makeatletter
+\patchcmd{\@maketitle}{\begin{center}}{\begin{flushleft}}{}{}
+\patchcmd{\@maketitle}{\begin{tabular}[t]{c}}{\begin{tabular}[t]{@{}l}}{}{}
+\patchcmd{\@maketitle}{\end{center}}{\end{flushleft}}{}{}
+\makeatother
+
+%% Creates the S Circle for supporting information (part 2)
+\newcommand\encircle[1]{
+\tikz[baseline=(X.base)]
+   \node (X) [draw, shape=circle, inner sep=0, fill=jblue, text=white] {\strut #1};}
+
+%% Specifies the column separation so that columns are not right on top of each other
+\setlength{\columnsep}{1cm}
+
+%% This command creates a thicker hrulefill, which are the line breaks
+\def\verrulefill#1{\leaders\hrule width 0pt height#1\hfill}
+
+%% This means that URLs are not put into a different (monospaced) font
+\urlstyle{same}
+
+%% This sets the font as Charter instead of LaTeX's standard Computer Modern.
+\usepackage{charter}
+\usepackage[charter]{mathdesign}		%Uses Charter for math font as well
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%											Document Start											   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% Use this title style if you have supporting information
+
+\title{\textbf{\fontfamily{phv}{\selectfont{The Most Incredible of Titles\vspace{-0.2cm}}}}}
+\author{\textsc{Author M. McAuthor\textsuperscript{*}\vspace{0.1cm}}\\
+\small {Department of Chemistry, Truman State University, 100 E. Normal Street, Kirksville, MO 63501}\vspace{0.1cm} \\
+\small {\encircle{S} \, Supporting Information}}
+\date{\vspace{-1cm}}
+
+%% Use this title style if do not have supporting information (uncomment this one and comment out the other)
+
+%\title{\textbf{\fontfamily{phv}{\selectfont{The Most Incredible of Titles\vspace{-0.2cm}}}}}
+%\author{\textsc{Author M. McAuthor\textsuperscript{*}\vspace{0.1cm}}\\
+%\small {Department of Chemistry, Truman State University, 100 E. Normal Street, Kirksville, MO 63501}}
+%\date{\vspace{-1cm}}
+
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \maketitle
+\begin{tcolorbox}
+\textcolor{jblue}{\textbf{ABSTRACT:}}
+This is where an abstract goes.
+\end{tcolorbox}
+\vspace{2mm}
+  \end{@twocolumnfalse}
+  ]
+  
+\textcolor{jblue}{\vspace{-1.1cm}\section{INTRODUCTION}} \noindent
+Words go here.
+
+%% Uncomment the following lines for a figure to appear; changing the name in the \frame line, inserting a caption, and changing the label name.
+%% To reference images in the future, use something like \ref{fig:example}
+%% Hint: You'll need to compile twice for the bibliography and reference labeling to work
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\noindent\textcolor{jblue}{\hrulefill\vspace{0.2cm}}
+%\frame{\includegraphics[width=\linewidth]{example.png}} %%%CHANGE THE NAME HERE
+%\caption{ Look at this example figure caption. }
+%\label{fig:example}
+%\noindent\textcolor{jblue}{\hrulefill}
+%\end{center}
+%\end{figure}
+
+
+%% Uncomment the following lines for a table to appear; changing the number of columns 
+%% (where {|c|c|c} makes 3 columns with dividers and {c c c} has 3 columns without dividers), inserting a caption, and changing the label name.
+%% To reference the table in the future, use something like \ref{table:example}
+%% Columns are divided through ampersands (&), new lines are stared with (\\), and bottom separator lines are created with (\hline)
+%% Units are easily added using the options of the siunitx package, and an example is shown here
+%% This is what a properly formatted table looks like, but if you have an incredible amount of data/are using LaTeX on your own, 
+%% I recommend using a website like https://www.tablesgenerator.com/
+%% Hint: You'll need to compile twice for the bibliography and reference labeling to work
+
+%\noindent\textcolor{jblue}{\hrulefill}
+%\begin{table}[htbp]
+%\centering
+%\caption{\textbf{ Look at this example table caption. }}
+%\label{table:example}
+%\begin{tabular}{c c c}
+%%\hline				%% If you wanted to have a preceding line, uncomment the beginning of this line
+%\rowcolor[gray]{0.9} Column A & Column B (\si{\joule}) & Column C (\si{\meter\squared}) \\
+%%\hline				%% If you wanted to have a line following this table, uncomment the beginning of this line
+%A & B & C \\
+%1 & 2 & 3 \\
+%4 & 5 & 6 \\
+%7 & 8 & 9 \\
+%10 & 11 & 12 \\ 
+%13 & 14 & 15
+%\vspace*{-4mm}
+%\end{tabular}
+%\end{table} \\
+%\noindent\textcolor{jblue}{\hrulefill}
+
+More words.
+
+\textcolor{jblue}{\section{METHODS}}
+\subsection*{Sample Collection and Criteria} \noindent %% Feel free to edit or remove this title (if removed, keep \noindent)
+More words.\cite{JournalA, JournalB}
+
+\subsection*{Computational Methods} \noindent %% Feel free to edit or remove this title
+Maybe words.\cite{Weblink}
+
+\textcolor{jblue}{\vspace{-0.2cm}\section{RESULTS AND DISCUSSION}} \noindent
+I ran some tests and the data are these. I found stuff.
+
+\textcolor{jblue}{\section{CONCLUSIONS}} \noindent
+The funnel.
+
+\textcolor{jblue}{\section*{$\blacksquare$ ASSOCIATED CONTENT}}
+\subsection*{\encircle{S} \, Supporting Information}
+The Supporting Information is available as an upload with this paper. \\ \indent
+%% Start adding words here
+
+\textcolor{jblue}{\vspace{-0.5cm}\section*{$\blacksquare$ AUTHOR INFORMATION}}
+\subsection*{Corresponding Author} \noindent
+*Email: \textcolor{jblue}{\href{example@truman.edu}{example@truman.edu}}
+
+\subsection*{Author Contributions} \noindent
+The manuscript was written through contributions of all authors. / All authors have given approval to the final version of the manuscript. / $\ddagger$ These authors contributed equally.  [Match statement to author names with a symbol, as appropriate.]
+
+\textcolor{jblue}{\vspace{-0.5cm}\subsection*{$\blacksquare$ ACKNOWLEDGEMENTS}} \noindent
+Thanks to A, B, C. The author(s) acknowledge support from somewhere.
+
+\textcolor{jblue}{\subsection*{$\blacksquare$ ABBREVIATIONS}} \noindent
+Are there any abbreviations? Abbr, abbreviation; GL, good luck \\
+
+%% Note: If you remove the abbreviations subsection, you will need to place the "\\" at the end of whatever line you end with.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%											References Start										   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Note, you are limited to 99 references using this format. Hope that's not a problem.
+\begin{thebibliography}{99}
+\bibitem{JournalA}
+Names.
+Article title if you're using the long form.
+\textit{Journal Name},
+\textbf{Year},
+\textit{Volume},
+Page Numbers.
+
+\bibitem{Weblink}
+Company or agency. Title. http://examplehyperlink.com (accessed May 1, 2018).
+
+\bibitem{JournalB}
+Names.
+Article title if you're using the long form.
+\textit{Journal Name},
+\textbf{Year},
+\textit{Volume},
+Page Numbers.
+
+%% Add more as you need them.
+
+\end{thebibliography}
+
+\end{document}
+
