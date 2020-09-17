@@ -1,0 +1,304 @@
+%% Poster based on http://www.njohnston.ca/2009/08/latex-poster-template/
+%% [available at https://www.overleaf.com/18178414bpjrvbftpzjt#/68745478/],
+%% Gemini [https://github.com/anishathalye/gemini], and Alice's poster template
+
+%% Save as a PDF, convert at 150 dpi (at least) using GIMP
+%% Ends up at 42 x 30, 167 dpi
+
+\documentclass[20pt]{beamer}
+
+%\usepackage[orientation=landscape,scale=1.4]{beamerposter}
+%% 48 in by 36 in = 121.92 x 92.44 cm
+\usepackage[size=custom,width=121.92,height=91.44,scale=1.4]{beamerposter}
+\usepackage{amssymb,amsmath} %% For equations and math symbols
+\usepackage{siunitx}                      %% For proper SI number and units
+\usepackage{color}                        %% To define colors
+\usepackage{tcolorbox}                 %% Colored boxes for text with section headings
+\usepackage{array}                       %% To arrange tables vertically and horizontally
+\usepackage{graphicx}                  %% For images
+\usepackage[labelfont=bf, justification=justified]{caption} %% To have bold and justified figure/table caption labels
+\usepackage[labelfont=bf, justification=justified]{subcaption}
+\usepackage{wrapfig}                    %% Can be used to allow image text wrapping
+\usepackage{enumerate}               %% Making lists
+\usepackage{enumitem}                %% For itemize options
+\usepackage{textcomp}                 %% For the correct tilde
+\usepackage{textgreek}                 %% For Greek
+\usepackage{multicol}                   %% For multicolumn figures
+\usepackage[utf8]{inputenc}          %% Font input encoding
+
+%% Modified Madrid theme
+\usetheme{Madrid}
+\definecolor{UNTgreen}{HTML}{00853E}
+%\definecolor{UNTgreen}{rgb}{0.01961,0.56471,0.2}
+\definecolor{UNT2green}{HTML}{509E2F}
+\definecolor{UNT3green}{HTML}{64A70B}
+\setbeamercolor*{palette primary}{fg=white,bg=UNTgreen}
+\setbeamercolor*{palette secondary}{fg=white,bg=UNTgreen}
+\setbeamercolor*{palette tertiary}{fg=white,bg=UNTgreen}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{block title}{bg=UNTgreen,fg=white}
+\setbeamercolor{caption name}{fg=black}
+
+%% Gets rid of footer
+\setbeamertemplate{footline}{}
+
+%% Adds figure numbering
+\setbeamertemplate{caption}[numbered]
+
+%% Path to images (leave blank if in the same folder as .tex)
+\graphicspath{{ }}
+
+%% Add several helpful SI units
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\Calorie}{\kilo\calorie}
+\DeclareSIUnit{\atm}{atm}
+\sisetup{per-mode=symbol}
+
+%% Want an approximate symbol that's a normal tilde
+\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}}
+
+% %% Two choices for columns: (a) use spacings specified by \colwidth
+% %% or (b) using 0.33\textwidth
+% %% Setting up \colwidth for option (a):
+% %% If you have N columns, choose \sepwidth and \colwidth such that
+% %% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+% \newlength{\sepwidth}
+% \newlength{\colwidth}
+% \setlength{\sepwidth}{0.025\paperwidth}
+% \setlength{\colwidth}{0.3\paperwidth}
+% \newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+
+%% Two choices for columns: (a) use spacings specified by \colwidth
+%% or (b) using 0.33\textwidth
+%% Setting up \colwidth for option (a):
+%% If you have N columns, choose \sepwidth and \colwidth such that
+%% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+\newlength{\sepwidth}
+\newlength{\colwidth}
+\setlength{\sepwidth}{0.0075\paperwidth} %0.36 in
+\setlength{\colwidth}{0.3\paperwidth}
+\newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+\newcommand{\topblockcolumn}{\begin{column}{4.5\sepwidth}\end{column}}
+% \newcommand{\topblockcolumn}{\begin{column}{0.02\paperwidth}\end{column}}
+
+\newlength{\bigcolwidth}
+\newlength{\smallcolwidth}
+\setlength{\bigcolwidth}{0.35\paperwidth}
+% \setlength{\bigcolwidth}{0.4\paperwidth}
+% \setlength{\smallcolwidth}{0.25\paperwidth}%%0.35 and 0.28
+\setlength{\smallcolwidth}{0.29\paperwidth}
+
+%% Setup the overall colorbox environment
+\tcbset{colback=UNTgreen!5!white, colframe=UNTgreen, fonttitle=\bfseries, center title, 
+boxrule=5pt, boxsep=10pt, after skip=20pt, adjusted title=Wide gap, 
+subtitle style={boxrule=0.4pt, colback=gray!50!white}}
+
+%% Keep this to heavily penalize hyphenating words
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\begin{document}
+%% Entire poster is a single frame
+\begin{frame}[t] %Keep the [t] to enclose in a frame
+%% Setup for title block
+\frametitle{\begin{columns}[c] %The [c] centers vertically
+%\separatorcolumn
+\topblockcolumn
+%% Left Image
+\begin{column}{0.125\textwidth}
+\begin{center}
+\includegraphics[scale=1]{example-image-a}
+\end{center}
+\end{column}
+%% Title Text
+\begin{column}{0.75\textwidth}
+\centering
+\huge{The Most Amazing of Titles}\\[0.5ex]
+\Large{\underline{Some R. Student}\textsuperscript{1, 2}, Just A. Advisor*\textsuperscript{2}}\\[1ex]
+\normalsize{\textsuperscript{1} Some University \\ \textsuperscript{2} Department of Chemistry, University of North Texas, Denton, TX 76203}\\[1ex]
+\end{column}
+%% Right Image -- this is a great place for QR codes
+\begin{column}{0.25\textwidth}
+\includegraphics[scale=1.5]{example-image-1x1}
+\end{column}
+\separatorcolumn
+\end{columns}}
+
+%------------------------------Main Poster---------------------%%%
+\begin{columns}[t]
+\separatorcolumn
+%------------------------------Left Column---------------------%%%
+%% \colwidth for same as others, \smallcolwidth for smaller, \bigcolwidth for bigger
+%\begin{column}{\colwidth}
+\begin{column}{\smallcolwidth}
+
+\begin{tcolorbox}[title=Background and Purpose, every float=\centering]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Methodology]
+
+\begin{itemize}[label=\textbullet, leftmargin=*]
+    \item Words about computers\textsuperscript{1} 
+    \item More words about computers
+    \begin{itemize}[label=\textbullet, leftmargin=*]
+        \item There were \num{101} things between \numrange{100}{200}
+    \end{itemize}
+    \item Amazing!
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Etwas]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.9]{example-image-b}
+\caption{Oh, look, an image.}
+\end{figure}
+
+\end{tcolorbox}
+
+\end{column}
+\separatorcolumn
+%------------------------------Center Column---------------------%
+%% \colwidth for same as others, \smallcolwidth for smaller, \bigcolwidth for bigger
+%\begin{column}{\colwidth}
+\begin{column}{\bigcolwidth}
+
+\begin{tcolorbox}[title=\LARGE{Take-Home Message}, every float=\centering, colframe=black]
+\Large{
+This is where I tell you the most important thing about this poster in an eye-catching box.
+}
+\end{tcolorbox}
+
+%% Can uncomment/copy/move this to add white space, equating top and bottom color boxes.
+\vspace{0.15in}
+
+\begin{tcolorbox}[title=Etwas, every float=\centering]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+\tcbsubtitle{\centering \color{black!85!gray} A Subtitle}
+Es tut mir leid.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.8]{example-image-c}
+\caption{Oh, look, an image.}
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Etwas]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+\begin{table}
+\caption{Here we have an example table with data. Incredible. Look at us go.}
+\begin{center}
+\begin{tabular}{| c | c | c | c |}
+\hline
+Unit A \si{\kilo\calorie\per\mol} & Unit B \si{\femto\second} & Unit C \si{\kelvin} & Unit D \si{\meter\per\second} \\ \hline
+\num{5.00} & \num{25} & \num{9001} & \num{9230.42} \\
+\num{5342} & \num{65} & \num{9654} & \num{193.13} \\ 
+\num{5.00} & \num{25} & \num{9001} & \num{9230.42} \\
+\num{5342} & \num{65} & \num{9654} & \num{193.13} \\ 
+\num{5.00} & \num{25} & \num{9001} & \num{9230.42} \\
+\num{5342} & \num{65} & \num{9654} & \num{193.13} \\ 
+\num{5.00} & \num{25} & \num{9001} & \num{9230.42} \\
+\num{5342} & \num{65} & \num{9654} & \num{193.13} \\ 
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\end{tcolorbox}
+
+
+\end{column}
+\separatorcolumn
+%------------------------------Right Column---------------------%%%
+%% \colwidth for same as others, \smallcolwidth for smaller, \bigcolwidth for bigger
+%\begin{column}{\colwidth}
+\begin{column}{\smallcolwidth}
+
+\begin{tcolorbox}[title=Etwas Anderes, every float=\centering]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \\[1ex]
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=3]{example-grid-100x100pt}
+\caption{This appears to be a 100x100 pt grid.}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=2]{example-image-10x16}
+\caption{This seems to be a vertical image. Bold choice.}
+\end{figure}
+
+\end{tcolorbox}
+
+%% Can uncomment/copy/move this to add white space, equating top and bottom color boxes.
+%\vspace{0.25in}
+
+\begin{tcolorbox}[title=References, fonttitle=\bfseries\small]
+\small
+1. D.A. Case, et al. AMBER; University of California: San Francisco, 2020. \\
+2. Some other reference. \\
+3. Look at us, referencing things. \\
+4. Oh, look. Another.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Acknowledgements, fonttitle=\bfseries\small]
+\small I would not like to thank the Academy, as they had no part in this. \\[1ex]
+
+\begin{center}
+% Setup for 3 columns of images, with smaller images centered
+\begin{tabular}{ m{0.3\colwidth} m{0.3\colwidth} m{0.3\colwidth} }
+\includegraphics[scale=0.8]{example-image-a} & \includegraphics[scale=0.8]{example-image-golden} & \includegraphics[scale=0.8]{example-image-b} \\
+\end{tabular}
+\end{center}
+
+\end{tcolorbox}
+
+\end{column}
+\separatorcolumn
+\end{columns}
+
+\end{frame}
+
+\end{document}
