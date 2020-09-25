@@ -11,6 +11,8 @@ same title and include the images.
 
 - `basic-document`: A document with some of my favorite/most-used options.
 - `business-cards`: Sample business cards.
+- `data-update`: A template for a project status update.
+It is useful for making a lot of image-based comparisons.
 - `horizonatal-poster`: Sample horizontal 48x36in research poster.
 - `lookalike-article-pub`: A template to recreate the formatting of a journal
 article. It *should not* be use to submit to a journal.
