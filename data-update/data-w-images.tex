@@ -1,0 +1,369 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in, headheight=15pt, headsep=12pt]{geometry} %% Adjusts the page set-up
+\usepackage{fancyhdr}			%% Sets up header/footer
+\usepackage[table]{xcolor}		%% To define colors and color table rows
+\usepackage[utf8]{inputenc}		%% Font input encoding
+\usepackage [english]{babel}		%% Sets the language
+\usepackage [autostyle, english = american]{csquotes} %% Allows you to use normal quotation marks instead of `` and ''
+\usepackage{titlesec}			%% Allows for more title and section heading options
+\usepackage{enumerate}			%% Allows for numbered lists
+\usepackage{siunitx}				%% For proper SI number and units
+\usepackage{setspace}			%% line spacing
+\usepackage{textcomp}			%% copyright symbol and textpm
+\usepackage{textgreek}			%% Greek letters
+\usepackage{color,soul,colortbl}	%% To highlight what to fix, color table
+\usepackage{graphicx}			%% Enables images to be inserted
+\usepackage{smartdiagram}		%% For nucleic acid diagrams
+\usepackage[labelfont=bf]{caption}	%% Fixes captions and makes the labels bold
+\usepackage{subcaption}			%% Captions in subfigure
+\usepackage{capt-of}                         %% Captions in float environment
+\usepackage{hyperref}			%% Creates hyperlink references to specific sections/figures in PDF/hyperlinked email
+
+
+%% Define Colors. 
+%% http://latexcolor.com/ can be very helpful here
+\definecolor{PalePink}{rgb}{0.98, 0.85, 0.87}
+\definecolor{RedOrange}{HTML}{FFB347}
+\definecolor{PaleGreen}{rgb}{0.6, 0.98, 0.6}
+\definecolor{PaleBlue}{rgb}{0.67, 0.8, 0.94}
+\definecolor{LtPurple}{HTML}{CA75FF}
+\definecolor{Gray}{rgb}{0.81, 0.81, 0.77}
+\definecolor{Mint}{HTML}{98FFCC}
+\definecolor{PaleYellow}{HTML}{F5FFB1}
+\definecolor{PaleOrange}{HTML}{FFCF7E}
+\definecolor{PalePurple}{rgb}{0.7, 0.62, 0.71}
+
+%% Set up subcaptions
+\captionsetup[subfigure]{labelformat = parens, labelsep = space, font = small}
+
+%% Specifies that all images are saved in the same folder where this file is saved
+\graphicspath{ { } }
+
+%% To add period after section number in TOC
+\renewcommand{\thesection}{\arabic{section}.}
+%% Period subsection number TOC
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+%% Period subsubsection number TOC
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
+
+%% Set-up SI units
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\kcal}{\kilo\calorie}
+\sisetup{detect-all, range-units = single, range-phrase=\ \textpm\ }
+
+%% Specify how numbers appear in references
+\makeatletter
+\renewcommand\@biblabel[1]{(#1)}
+\makeatother
+
+%% Change TOC name
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Analyses}%
+}
+
+%% Set up header/footer
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{Jay Doe}
+\fancyhead[C]{\today}
+\fancyfoot[C]{\thepage}
+
+
+%Change to sans serif font
+\renewcommand{\familydefault}{\sfdefault}
+\everymath={\sf}
+
+\begin{document}
+
+%-----------------       Start Document           --------------%
+\title{\large Data Report \vspace{-0.6cm}}
+\author{\normalsize{Jay Doe} \vspace{-0.6cm}}
+\date{\normalsize \today}
+
+\maketitle
+
+\tableofcontents
+
+\pagebreak
+
+%---------------          Systems Overview          ---------------%
+\section{Overview}
+\fancyhead[R]{Overview} %% Specify name of section for header
+
+\subsection{Example Nucleic Acid}
+
+\begin{center}
+\smartdiagramset{set color list={green!40, green!40, green!40, green!40, LtPurple}, 
+sequence item border color=white, sequence item font size=\footnotesize
+}
+\smartdiagram[sequence diagram]{T, T, T, T, \textbf{A}}
+\smartdiagramset{uniform color list=yellow!40 for 5 items, 
+sequence item border color=white, sequence item font size=\footnotesize,
+}
+\smartdiagram[sequence diagram]{A1, A2, A3, A4, \textbf{A5}}
+\end{center}
+
+\pagebreak
+
+%---------------            OP Distances             ---------------%
+\section{X-X Distances}
+\fancyhead[R]{X-X Distances} %% Specify name of section for header
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R1-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{R1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R2-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{R2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R3-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{R3}
+    \end{subfigure}
+    \caption{X-X distances for the R systems.}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \label{fig:S1-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{S1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \label{fig:S2-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{S2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S3-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{S3}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S4-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{S4}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S5-XX}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{S5}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S6-00}{\includegraphics[width=\linewidth]{example-image-a}}
+        \caption{S6}
+    \end{subfigure}
+    \caption{X-X distances for the S systems.}
+\end{figure}
+
+\pagebreak
+
+%---------------            RMSD Backbone             ---------------%
+\section{Backbone RMSD}
+\fancyhead[R]{Backbone RMSD} %% Specify name of section for header
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R1-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{R1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R2-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{R2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R3-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{R3}
+    \end{subfigure}
+    \caption{Root mean square deviation (RMSD) for the backbone of the R systems.}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \label{fig:S1-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{S1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \label{fig:S2-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{S2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S3-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{S3}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S4-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{S4}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S5-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{S5}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S6-RMSD}{\includegraphics[width=\linewidth]{example-image-b}}
+        \caption{S6}
+    \end{subfigure}
+    \caption{Root mean square deviation (RMSD) for the backbone of the S systems.}
+\end{figure}
+
+\pagebreak
+
+%---------------             RMSF             ---------------%
+\section{Root Mean Square Fluctuations}
+\fancyhead[R]{RMSF} %% Specify name of section for header
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R1-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{R1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R2-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{R2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:R3-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{R3}
+    \end{subfigure}
+    \caption{Root mean square fluctuation (RMSF) for the backbone of the R systems.}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \label{fig:S1-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{S1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \label{fig:S2-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{S2}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S3-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{S3}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S4-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{S4}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S5-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{S5}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \label{fig:S6-RMSF}{\includegraphics[width=\linewidth]{example-image-c}}
+        \caption{S6}
+    \end{subfigure}
+    \caption{Root mean square fluctuation (RMSF) for the backbone of the S systems.}
+\end{figure}
+
+\pagebreak
+
+%---------------             HBA             ---------------%
+\section{Hydrogen Bond Analysis}
+\fancyhead[R]{HBA} %% Specify name of section for header
+
+%% BEGIN TABLE ---------------------------------------------------
+\begin{table}[htb!]
+    \caption{Selected values for hydrogen bond interactions across total simulation time. All values are an average of the total simulation time for each replicate (\si{\percent}). Acceptor--donor interactions affected at a \SI{20}{\percent} threshold are highlighted yellow, at a \SI{50}{\percent} threshold are highlighted orange, and at an \SI{80}{\percent} threshold are highlighted purple.}
+    \label{tab:HBA}
+    \centering
+    \begin{tabular}{|c|c|r|r|r|r|r|r|}
+    \hline
+Acceptor    & Donor     & WT A & A123B & A123C & A123D & A123E & A123F\\ \hline
+% \rowcolor{PaleOrange}
+% \rowcolor{PaleYellow}
+% \rowcolor{PalePurple}
+% & 0.00  & 0.00  & 0.00 & 0.00    & 0.00  & 0.00 \\
+%
+\rowcolor{PaleOrange}
+C112@O	& S122@N	& 1.00  & 60.00 	& 61.00 	& -     	& 62.00	& 63.00 \\
+%
+\rowcolor{PalePurple}
+R543@O	& R532@NH2	& 1.00  & -		& - 		& 82.00	& 83.00	& 85.00 \\
+% 
+\rowcolor{PaleYellow}
+G302@O	& R938@N1	& 80.00  & 45.00	& 47.00	& 48.00	& 49.00	& 50.00 \\ \hline
+    \end{tabular}
+\end{table}
+%% END TABLE ------------------------------------------------
+
+% \pagebreak
+
+%%---------------            Normal Mode Analysis             ---------------%
+%\section{Normal Mode Analysis}
+%\fancyhead[R]{NMA} %% Specify name of section for header
+
+% \pagebreak
+
+%%---------------       Energy Decomposition Analysis        ---------------%
+%\section{Energy Decomposition Analysis}
+%\fancyhead[R]{EDA} %% Specify name of section for header
+
+% \pagebreak
+
+%%---------------       Dynamic Cross-Correlation        ---------------%
+%\section{Dynamic Cross-Correlation}
+%\fancyhead[R]{MC} %% Specify name of section for header
+
+% \pagebreak
+
+%%---------------           MC Differences            ---------------%
+%\section{Differences in Dynamic Cross-Correlation}
+%\fancyhead[R]{MC Differences} %% Specify name of section for header
+
+% \pagebreak
+
+\end{document}
