@@ -1,0 +1,295 @@
+%% Streamlined CV with colored lines under section headers
+
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage[left=1in,right=1in,bottom=1in,top=1in]{geometry}%,includefoot
+\usepackage{latexsym}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{multicol}
+% For publication list
+\usepackage[leftmargin=24pt,labelsep=10pt,topsep=0pt,itemsep=0pt,
+			partopsep=0pt,parsep=0pt]{etaremune}
+\usepackage{xcolor}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+
+%% Fonts		
+\renewcommand{\familydefault}{\sfdefault}	 %% For a sans serif
+\usepackage[scaled=0.94]{helvet} % For Helvetica
+
+\pagestyle{fancy}
+%% Clear all header and footer fields
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%% Adjust margins
+%\addtolength{\oddsidemargin}{-0.375in}
+%\addtolength{\evensidemargin}{-0.375in}
+%\addtolength{\textwidth}{1in}
+%\addtolength{\topmargin}{-.5in}
+%\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%% Define Colorbar Color
+%% UNT Green: 00853E
+\definecolor{ColBar}{HTML}{FF0000}
+
+%% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\Large
+}{}{0em}{}[\color{ColBar}\titlerule \vspace{-5pt}]
+
+%% Set secondary bullet point
+\renewcommand{\labelitemii}{$\circ$}
+
+%% Create an entry for one degree
+%% University & Location
+%% Major & Dates
+\newcommand{\EduOneDegree}[4]{
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {#3} & { #4} \\
+    \end{tabular*}
+}
+
+%% Create an entry for two degrees from the same university
+%% University & Location
+%% First Major & Dates
+%% Second Major & Dates
+\newcommand{\EduTwoDegrees}[6]{
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {#3} & { #4} \\
+      {#5} & { #6} \\
+    \end{tabular*}
+}
+
+%% Create entries for CV items
+%% Ex: {Job Title}{Location}{Company}{Dates}
+\newcommand{\CVListEntry}[4]{
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {#3} & { #4} \\
+    \end{tabular*}
+}
+
+%% Start bullets after CVListEntry
+\newcommand{\CVListStart}{\begin{itemize}[leftmargin=*]\item[]\begin{itemize}[nosep]}
+\newcommand{\CVListEnd}{\end{itemize}\end{itemize}}
+
+%% Bullets without CVListEntry
+\newcommand{\CVBulletListStart}{\begin{itemize}[leftmargin=*, nosep]}
+\newcommand{\CVBulletListEnd}{\end{itemize}}
+%% Sub-list
+\newcommand{\CVBulletListSubStart}{\begin{itemize}[nosep]}
+\newcommand{\CVBulletListSubEnd}{\end{itemize}}
+
+%% Create a time-based entry
+%% Item & Date
+%% Ex: {Item}{Date}
+\newcommand{\TimeEntry}[2]{
+    \item
+    \begin{tabular*}{0.975\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2
+    \end{tabular*}
+}
+
+%% Create an entry for awards and the like
+%% Item & Location
+%% Year
+%% Ex: {Item}{Location}{Year}
+\newcommand{\AwardEntry}[3]{
+    \item
+    \begin{tabular*}{0.975\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #3\\
+      \textit{#2} & \\
+    \end{tabular*}
+}
+
+%---------------------------------------------------------------------%
+%---------------------------  CV STARTS HERE  ------------------------%
+%---------------------------------------------------------------------%
+
+
+\begin{document}
+%% Set up footer
+\fancyfoot[L]{Dr. William H. Horrible}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Last Updated: \today}
+
+%------------------ Header
+
+\begin{center}
+%% The two outer mini-pages should match in size so that the name is centered
+    \begin{minipage}[b]{0.19\textwidth}
+            Hell, MI \\
+            +1.123.456.7890 \\
+            \href{mailto:example@gmail.com}{example@gmail.com} 
+    \end{minipage}% 
+    \begin{minipage}[b]{0.6\textwidth}
+            \centering
+            \Huge{\textbf{Dr. William H. Horrible}}\\
+            \large{he/him}
+    \end{minipage}% 
+    \begin{minipage}[b]{0.19\textwidth}
+            \flushright
+            {\href{https://github.com/example}{GitHub: example} } \\
+            \href{https://orcid.org/0000-0002-1825-0097}{ORCID: 0000-0002-1825-0097}
+    \end{minipage}   
+    
+\vspace{-0.15cm}
+%\hrulefill
+{\color{ColBar}\hrulefill}
+\normalsize
+\end{center}
+
+%------------------ Education
+\section{Education}
+\EduOneDegree
+    {University of Hell}{Hell, MI}
+    {Ph.D. in Horribleness}{August 2016 -- May 2021}\bigskip
+
+\EduTwoDegrees
+    {Falling Star State}{Lucky Boy, NV}
+    {B.S. in Life}{August 2012 -- May 2016}
+    {B.A. in Robotics}{August 2012 -- May 2016}
+
+%------------------ Publications
+\section{Publications}
+\begin{etaremune}
+  \item \href{https://doi.org/}{Horrible, W.H.; Horse, B. Joining the Evil League of Evil. \textit{Badhorsery} \textbf{2019}, \textit{11}, 123-154.}
+  \item \href{https://doi.org/}{Horrible, W.H.; Helberg, S.; Horse, B. Laundry or Ice Cream: A Moral Quandary. \textit{Evil Phil.} \textbf{2017}, \textit{2}, 222-233.}
+\end{etaremune}
+
+%------------------ Research Experience
+\section{Research Experience}
+
+\CVListEntry
+    {Graduate Research Assistant}{Hell, MI}
+    {University of Hell}{August 2016 -- May 2021}
+\CVListStart
+    \item \textbf{Advisor}: Dr. Bad Horse
+    \item Created a freeze ray
+    \item Instigated Captain Hammer
+\CVListEnd
+
+%------------------ Work Experience
+\section{Work Experience}
+
+\CVListEntry
+    {Teaching Assistant}{Hell, MI}
+    {University of Hell}{August 2016 -- May 2021}
+\CVListStart
+    \item \textbf{Introduction to Evil}: Instructed 239 first-year students about introductory evil principles while incorporating evil ethics
+    \item \textbf{Temperature Science}: Taught 54 undergraduates about heat rays and freeze rays
+\CVListEnd
+
+\CVListEntry
+    {Henchmen}{Lucky Boy, NV}
+    {Evil Sidekicks USA}{August 2013 -- May 2016}
+\CVListStart
+    \item Wrote bad instructions
+    \item Purchased goods on the Black Market
+\CVListEnd
+
+\CVListEntry
+    {Barista}{Lucky Boy, NV}
+    {Falling Star Coffee}{August 2012 -- May 2016}
+\CVListStart
+    \item Wrote down names incorrectly and pretended they were correct
+    \item Charged customers at the highest possible cost for substitutions
+\CVListEnd
+
+%\CVListEntry
+%
+%\CVListStart
+%    \item 
+%\CVListEnd
+
+%------------------ Technical Skills and Languages
+\section{Technical Skills and Languages}
+
+\CVBulletListStart
+    \item\textbf{Software and Programs}:
+      {GIMP; Google Workspace; iMovie; Jekyll; Microsoft Word, Excel, and PowerPoint.}
+      \item\textbf{Programming Languages, Environments, and Systems}:
+      {Bash; C; C++; Git version control; GitHub project management; HTML/CSS; \LaTeX; Python (Matplotlib, Numpy, Pandas, Snakemake); and Windows, Mac, and Linux Operating Systems.}
+    \item\textbf{Languages}:
+      \CVBulletListSubStart
+      \item English - native fluency
+      \item American Sign Language - advanced fluency
+      \item Klingon - intermediate speaking, reading, writing, and listening
+      \CVBulletListSubEnd
+\CVBulletListEnd
+
+%------------------ Academic Presentations
+\section{Academic Presentations}
+\begin{etaremune}%[start=5]
+  \item \textnormal{``What Can Happen in Five Years of Horror? The Death of an Icon, for Starters.'' W.H. Horrible, B. Horse. \textbf{Presentation}. 283\textsuperscript{rd} Annual Evil Caucus, May 1, 2021.}
+  \item \textnormal{``Building an Ice-Assisted Shooting Device.'' W.H. Horrible, S. Helberg, B. Horse. \textbf{Poster}. 199\textsuperscript{th} World's Evil Expedition, April 1, 2019.}
+\end{etaremune}
+
+
+%------------------ Extracurricular Activities
+\section{Extracurricular Activities}
+
+\CVBulletListStart
+
+    \AwardEntry{Evil League of Evil}{Probationary Member}{2020 -- Present}
+
+    \TimeEntry{Machine Ghosts}{2015 -- Present}
+    \CVBulletListSubStart
+        \item \textbf{Chapter President}: Facilitated weekly meetings and managed robot software
+        \item \textbf{Halloween Chair}: Organized the annual haunted house
+        \vspace{5pt}
+    \CVBulletListSubEnd
+
+\CVBulletListEnd
+
+%------------------ Awards and Honors
+\section{Awards and Honors}
+
+\CVBulletListStart
+    \AwardEntry{A Most Evil Scholarship}{University of Hell Horrible Department}{2019}
+    \AwardEntry{First Place Presentation}{University of Hell Horrible Department Graduate Presentation Day}{2018}
+%    \AwardEntry{}{}{}
+\CVBulletListEnd
+
+%------------------ Professional Development Coursework
+\section{Professional Development Coursework}
+
+\CVBulletListStart
+    \AwardEntry{Evil App Design}{Horrible Computer Workshop}{July 2020}
+    \CVBulletListSubStart
+        \item Final project: \href{https://example.com}{War Games}, app for practicing the game where the only way to win is not to play
+    \CVBulletListSubEnd
+    \AwardEntry{Crying Babies Workshop}{University of Hell}{January 2017}
+    \AwardEntry{Robotic Mind Control}{Falling Star State}{February 2013}
+%    \AwardEntry{}{}{}
+\CVBulletListEnd
+
+%------------------ Hobbies
+\section{Hobbies and Non-Academic Interests}
+\setlength\multicolsep{0pt}
+\begin{multicols}{3}
+    \begin{itemize}[leftmargin=*,nosep]
+        \item{Blogging}
+        \item{Heists}
+        \item{Laundry}
+        \item{Robotics}
+        \item{Singing}
+    \end{itemize}
+\end{multicols}
+
+\end{document}
