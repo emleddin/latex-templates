@@ -23,4 +23,6 @@ communication. It *should not* be use to submit to a journal.
 (or supplemental) information of a publication.
 It could potentially be used to submit to a journal, if you really wanted, as
 the SI requirements are often less strict.
+- `tabular-CV`: A CV template for keeping dates to the left in a table format.
+It is a very common style for German CVs.
 - `vertical-poster`: Sample vertical 36x48in research poster.

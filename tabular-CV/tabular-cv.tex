@@ -1,0 +1,389 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Loosely based on Plasmati Graduate CV
+% by Alessandro Plasmati (alessandro.plasmati@gmail.com)
+% with License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Updated by EML for pdflatex, commands, and equal columns
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+% Default font size and paper size (legalpaper for US, a4paper for abroad)
+\documentclass[legalpaper,11pt]{article}
+
+%% Set up Font
+% Use sans serif
+\renewcommand{\familydefault}{\sfdefault}	
+% For Helvetica (use with sans serif command)
+\usepackage[scaled=0.94]{helvet}
+
+
+% 1.27 cm == 0.5 in
+% 1.5875 cm = 0.625 in
+%% Set up page
+%% 1.5875cm for a4paper
+%\usepackage[left=1.5875cm,
+%            right=1.5875cm,
+%            bottom=1.5875cm,
+%            top=1.5875cm,
+%            includefoot]{geometry}
+%% 1in for legalpaper
+\usepackage[margin=1in,includefoot]{geometry}
+
+% Required for specifying custom colors
+\usepackage[usenames,dvipsnames]{xcolor}
+
+% Required for table alignments
+\usepackage{array}
+% Required for itemize fix
+\usepackage{enumitem}
+% Required for multicol
+\usepackage{multicol}
+
+%-------- Set up column widths
+% Information
+%\newcolumntype{I}{>{\raggedleft\arraybackslash}m{0.15\textwidth}}
+%\newcolumntype{J}{>{\raggedright\arraybackslash}m{0.75\textwidth}}
+
+% Year (Publications)
+% Don't add to 100. Leave some room (~0.05) for \tabcolsep
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}p{0.05\textwidth}}
+\newcolumntype{Z}{>{\raggedright\arraybackslash}p{0.9\textwidth}}
+
+% Span (Time or Text)
+% Don't add to 100. Leave some room (~0.05) for \tabcolsep
+\newcolumntype{S}{>{\raggedleft\arraybackslash}m{0.25\textwidth}}
+\newcolumntype{T}{>{\raggedright\arraybackslash}m{0.7\textwidth}}
+%--------
+
+%% Remove paragraph indent after sections -- important for table alignments
+\setlength{\parindent}{0pt}
+
+%% Redefine itemize
+\setlist[itemize]{nosep,     %% Keep from spacing between elements
+                 %% Force a little room between previous text and bullets
+                 topsep     = 2pt       ,
+                 %% Force at margin
+                 leftmargin = *         ,
+                 %% Can mess with symbol, but this is default
+                 label      = $\bullet$ ,
+                 %% Eliminate the extra line after the bullet!
+                 after      = \vspace{-\baselineskip},
+                 %% Hanging indent
+                 itemindent=-20pt}
+
+% Used to customize the \section command
+\usepackage{titlesec}
+% Text formatting of sections
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+% Spacing around sections
+\titlespacing{\section}{0pt}{3pt}{3pt}
+			
+%% Add in links
+\usepackage[pdftex]{hyperref}
+
+%% Custom header/footer
+\usepackage{fancyhdr}
+
+%% Don't hyphenate words
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%% Initialize header/footer
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%%------- Create CV Commands
+
+%% Set up the CV name block
+\newcommand{\CVName}[1]{
+    \begin{center}
+    {{\Huge \textbf{#1}}\bigskip}
+    \end{center}
+}
+
+%% Set up the section table
+\newenvironment{CVSpan}
+{
+    \begin{tabular}{S|T}
+}
+{
+     \end{tabular}\vspace{0.5\baselineskip}
+}
+
+%% Set up lineless section table
+\newenvironment{CVLineless}
+{
+    \begin{tabular}{ST}
+}
+{
+     \end{tabular}\vspace{0.5\baselineskip}
+}
+
+%% Set up the year-only section table
+\newenvironment{CVYear}
+{
+    \begin{tabular}{Y|Z}
+}
+{
+     \end{tabular}\vspace{0.5\baselineskip}
+}
+
+%% Add in an entry
+%% Call with \CVInfo{Date -- Date}{All other info}
+\newcommand{\CVInfo}[2]{
+    #1 & #2\\
+}
+
+%% Use an itemized list for the right-hand side
+\newcommand{\CVItems}[1]{
+    &
+    \begin{itemize}
+    #1
+    \end{itemize}\\
+}
+
+%% Define a break in the table
+\newcommand{\CVBreak}{
+    \multicolumn{2}{c}{}\\
+}
+
+%%-------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	SET UP FOOTER
+%----------------------------------------------------------------------------------------
+
+%% Use \insertfooter to add the footer
+\newcommand{\insertfooter}{
+\fancyfoot[L]{Dr. William H. Horrible}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Last Updated: \today}
+}
+
+%% Use \mypagebreak to create a pagebreak with footer
+\newcommand{\mypagebreak}{\newpage\insertfooter}
+
+%% Apply the footer
+\insertfooter
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+% Your name
+\CVName{William H. Horrible}
+
+\section{Personal Data}
+
+\begin{CVLineless}
+    \CVInfo{Address:}{Hell, MI}
+    \CVInfo{Email:}{\href{mailto:example@gmail.com}{example@gmail.com}}
+    \CVInfo{GitHub:}{\href{https://github.com/example}{Github: example}}
+\end{CVLineless}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\begin{CVSpan}
+    \CVInfo{August 2016 -- May 2021}{\textbf{University of Hell} (Hell, MI, USA)}
+    \CVInfo{}{\textbf{University of Hell} (Hell, MI, USA)}
+    \CVInfo{}{Ph.D. in Horribleness}
+    \CVInfo{}{GPA: 3.74/4.00}
+    
+    \CVBreak
+    
+    \CVInfo{August 2012 -- May 2016}{\textbf{Falling Star State} (Lucky Boy, NV, USA)}
+    \CVInfo{}{Bachelor of Science in Life}
+    \CVInfo{}{Bachelor of Arts in Robotics}
+    \CVInfo{}{GPA: 3.11/4.00}
+\end{CVSpan}
+
+%----------------------------------------------------------------------------------------
+%	Research Experience
+%----------------------------------------------------------------------------------------
+
+\section{Research Experience}
+
+\begin{CVSpan}
+    \CVInfo{August 2017 -- Present}{\textbf{Graduate Research Assistant}}
+    \CVInfo{}{University of Hell (Hell, MI, USA)}
+    \CVInfo{}{\textbf{Advisor:} Dr. Bad Horse}
+    \CVItems{
+            \item Created a freeze ray
+            \item Instigated Captain Hammer
+    }
+\end{CVSpan}
+
+
+%----------------------------------------------------------------------------------------
+%	Publications
+%----------------------------------------------------------------------------------------
+
+\section{Publications}
+
+\begin{CVYear}
+    \CVInfo{2019}{\href{https://doi.org/}{Horrible, W.H.; Horse, B. Joining the Evil League of Evil. \textit{Badhorsery} \textbf{2019}, \textit{11}, 123-154.}}
+    
+    \CVInfo{2017}{\href{https://doi.org/}{Horrible, W.H.; Helberg, S.; Horse, B. Laundry or Ice Cream: A Moral Quandary. \textit{Evil Phil.} \textbf{2017}, \textit{2}, 222-233.}}
+\end{CVYear}
+
+%----------------------------------------------------------------------------------------
+%	Awards and Honors
+%----------------------------------------------------------------------------------------
+
+\section{Awards and Honors}
+
+\begin{CVYear}
+    \CVInfo{2019}{\textbf{A Most Evil Scholarship}, University of Hell Horrible Department}
+
+    \CVInfo{2017}{\textbf{First Place Presentation}, University of Hell Horrible Department Graduate Presentation Day}
+\end{CVYear}
+
+%----------------PAGE BREAK--------------------
+%\mypagebreak
+%------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	Professional Experience
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+\begin{CVSpan}
+\CVInfo{August 2016 -- May 2021}{\textbf{Teaching Assistant}}
+    \CVInfo{}{University of Hell (Hell, MI, USA)}
+    \CVItems{\item \textbf{Introduction to Evil}: Instructed 239 first-year students about introductory evil principles while incorporating evil ethics
+             \item \textbf{Temperature Science}: Taught 54 undergraduates about heat rays and freeze rays
+    }
+
+%% Force linebreak without centerline
+\CVBreak
+%------------------------------------------------
+
+    \CVInfo{August 2012 -- May 2016}{\textbf{Barista}}
+    \CVInfo{}{Falling Star Coffee}
+    \CVItems{
+    \item Wrote down names incorrectly and pretended they were correct
+    \item Charged customers at the highest possible cost for substitutions
+    }
+\end{CVSpan}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES
+%----------------------------------------------------------------------------------------
+
+\section{Languages}
+
+\begin{CVSpan}
+    \CVInfo{English}{Native fluency}
+    \CVInfo{American Sign Language}{Advanced fluency}
+    \CVInfo{Klingon}{Intermediate speaking, reading, writing, and listening}
+\end{CVSpan}
+
+%----------------------------------------------------------------------------------------
+%	Technical SKILLS 
+%----------------------------------------------------------------------------------------
+
+\section{Technical Skills}
+
+\begin{CVSpan}
+    \CVInfo{Software and Programs:}{GIMP; Google Workspace; iMovie; Jekyll; Microsoft Word, Excel, and PowerPoint}
+    
+    \CVBreak
+    
+    \CVInfo{Programming Languages, Environments, and Systems:}{Bash; C; C++; Git version control; GitHub project management; HTML/CSS; \LaTeX; Python (Matplotlib, Numpy, Pandas, Snakemake); and Windows, Mac, and Linux Operating Systems}
+\end{CVSpan}
+
+%----------------------------------------------------------------------------------------
+%	Presentations
+%----------------------------------------------------------------------------------------
+
+\section{Presentations}
+
+\begin{CVSpan}
+    \CVInfo{May 1, 2021}{``What Can Happen in Five Years of Horror? The Death of an Icon, for Starters.'' W.H. Horrible, B. Horse. \textbf{Presentation}. 283\textsuperscript{rd} Annual Evil Caucus.}
+
+    \CVBreak
+    
+    \CVInfo{April 1, 2019}{``Building an Ice-Assisted Shooting Device.'' W.H. Horrible, S. Helberg, B. Horse. \textbf{Poster}. 199\textsuperscript{th} World's Evil Expedition, April 1, 2019.}
+\end{CVSpan}
+
+%----------------------------------------------------------------------------------------
+%	Extracurricular Activities
+%----------------------------------------------------------------------------------------
+
+\section{Extracurricular Activities}
+
+\begin{CVSpan}
+    \CVInfo{2020 -- Present}{\textbf{Evil League of Evil}, Probationary Member}
+
+    \CVBreak
+
+    \CVInfo{2015 -- Present}{\textbf{Machine Ghosts}}
+    \CVItems{
+        \item \textbf{Chapter President}: Facilitated weekly meetings and managed robot software
+        \item \textbf{Halloween Chair}: Organized the annual haunted house
+    }
+\end{CVSpan}
+
+%----------------------------------------------------------------------------------------
+%	Professional Development Coursework
+%----------------------------------------------------------------------------------------
+
+\section{Professional Development Coursework}
+
+\begin{CVSpan}
+    \CVInfo{July 2020}{\textbf{Evil App Design}, Horrible Computer Workshop}
+    \CVItems{
+        \item Final project: \href{https://example.com}{War Games}, app for practicing the game where the only way to win is not to play
+    }
+
+    \CVBreak
+    
+    \CVInfo{January 2017}{\textbf{Crying Babies Workshop}, University of Hell}
+
+    \CVBreak
+
+    \CVInfo{February 2013}{\textbf{Robotic Mind Control}, Falling Star State}
+\end{CVSpan}
+
+%----------------------------------------------------------------------------------------
+%	Hobbies
+%----------------------------------------------------------------------------------------
+
+
+\section{Hobbies and Non-Academic Interests}
+
+\setlength\multicolsep{0pt}
+\begin{multicols}{3}
+    \begin{itemize}[leftmargin=*,nosep]
+        \item{Blogging}
+        \item{Heists}
+        \item{Laundry}
+        \item{Robotics}
+        \item{Singing}
+    \end{itemize}
+\end{multicols}
+
+%----------------PAGE BREAK--------------------
+%\mypagebreak
+%------------------------------------------------------
+
+
+
+\end{document}
