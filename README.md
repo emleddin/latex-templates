@@ -13,6 +13,7 @@ same title and include the images.
 - `business-cards`: Sample business cards.
 - `data-update`: A template for a project status update.
 It is useful for making a lot of image-based comparisons.
+- `exam`: A template for multiple-choice exams.
 - `horizonatal-poster`: Sample horizontal 48x36in research poster.
 - `lined-CV`: A CV template with colored lines under the heading sections.
 - `lookalike-article-pub`: A template to recreate the formatting of a journal

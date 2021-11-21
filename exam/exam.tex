@@ -1,0 +1,228 @@
+\documentclass[12pt]{exam}
+%% Class documentation: http://www-math.mit.edu/~psh/exam/examdoc.pdf
+% Loading Things
+\usepackage[margin=1.0in]{geometry}
+\usepackage{enumerate} % Making lists
+\usepackage[utf8]{inputenc}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage[T1]{fontenc}    % Font encoding
+\usepackage{graphicx} 		% images
+\usepackage{amsmath} 		% Math
+\usepackage{amssymb}					% Needed for checkboxes
+% \usepackage{amssymb}		% Needed for checkboxes
+% \usepackage[most]{tcolorbox} 	% Colored boxes for text with section headings
+\usepackage{tcolorbox} 	 % Colored boxes for text with section headings
+\usepackage[detect-all, retain-explicit-plus]{siunitx} 	% SI units
+\usepackage[version=4]{mhchem} 			    % Chemical equations
+\usepackage{xcolor, soul}
+
+%% Set the font
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{opensans}
+\usepackage{sansmathfonts}
+% \usepackage{helvet}
+
+\usepackage{hyperref}
+
+%% Set the solution box color
+\definecolor{SolutionColor}{rgb}{0.8,0.9,1}
+
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\Calorie}{\kilo\calorie}
+\DeclareSIUnit{\atm}{atm}
+\DeclareSIUnit{\torr}{Torr}
+\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
+%% Use textsc for small caps, to avoid confusion with Mega
+\DeclareSIUnit\Molar{\textsc{m}}
+\sisetup{per-mode=symbol}
+
+%% Put a label in front to the question number
+% \renewcommand\questionlabel{\textbf{PROBLEM \thequestion}.}
+
+\urlstyle{same}
+\hypersetup{
+    linktoc=all,     %set to all if you want both sections and subsections linked
+}
+
+%% Change the footer
+%\firstpagefooter{}{}{}
+%\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpagefooter{}{\thepage}{}
+\runningfooter{}{\thepage}{}
+
+%% Highlighting is hard, so make correct answers blue and bold
+\CorrectChoiceEmphasis{\color{blue}\bfseries}
+
+%% Define checkbox style
+%\checkboxchar{$\square$}
+% \checkboxchar{$\Box$}
+%% Solution Answer
+% \checkedchar{$\blacksquare$}
+
+%Document Beginning
+\begin{document}
+
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%              Document Start                   %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use \printanswers to include the answers on the document
+%% Comment it out with % to hide them
+%\printanswers
+
+%% Use \shadedsolutions to turn the outlined light gray solution box 
+%% into an unoutlined dark gray shaded box
+% \shadedsolutions
+
+\noindent
+\begin{table}[h]
+\begin{tabular}{lr}
+Student ID: \rule{1.5in}{1pt} & Name: \rule{3.25in}{1pt}
+\end{tabular}
+\end{table}
+
+\begin{tcolorbox}[valign=center, box align=center, title=Instructions]
+This is where you can give directions, if you want.
+\end{tcolorbox}
+
+\begin{questions}
+
+%% Start multiple choice. Indents are for your personal benefit, not required
+%% Use \ce{} to set chemical equations.
+%% See the mhchem documentation for more:
+%% https://mirror.csclub.uwaterloo.ca/CTAN/macros/latex/contrib/mhchem/mhchem.pdf
+%% If you want to use in-line a/b/c/d/e, call \begin{oneparchoices} instead of \begin{choices}
+\question Something something \ce{NO2-}. 
+	\begin{choices}
+	\choice A
+	\CorrectChoice B
+	\choice C
+	\choice D
+	\choice E
+	\end{choices}
+	
+	%% Explanation
+	\begin{solution} 
+	Answer B is correct because I said so.
+	\end{solution}
+
+\question \label{ques:which}
+What should the answer be?
+    \begin{choices}
+	\choice Not A
+	\choice I wouldn't pick B
+	\choice Why would you pick this one?
+	\choice Please don't pick me
+	\CorrectChoice None of these
+	\end{choices}
+
+    %% Explanation
+    \begin{solution}
+    Probably a trick, but "None of these" is correct.
+    \end{solution}
+
+%% I'm gonna stop with the solution block because you get the point :)
+
+\question In question \ref{ques:which}, which was the correct choice?
+    \begin{choices}
+	\choice No
+	\CorrectChoice E
+	\choice No
+	\choice No
+	\choice No
+	\end{choices}
+
+\question Mark the correct formula for sugar.
+    \begin{choices}
+	\choice \ce{C4H5O3}
+	\choice \ce{C2H5O5}
+	\choice \ce{C4H10O2}
+	\CorrectChoice \ce{C6H12O6}
+	\choice None of these
+	\end{choices}
+
+%% Use this to insert a page break
+\newpage
+
+\question {\sethlcolor{pink}\hl{Remember to write a question here}}.
+    \begin{choices}
+	\choice One
+	\choice Two
+	\CorrectChoice Fish
+	\choice Red
+	\choice Blue
+	\end{choices}
+
+\question Which is the smallest?
+    \begin{choices}
+	\choice \SI{1}{\angstrom}
+	\choice \SI{0.1}{\angstrom}
+	\CorrectChoice \SI{0.001}{\angstrom}
+	\choice \SI{2}{\angstrom}
+	\choice \SI{48}{\angstrom}
+	\end{choices}
+
+\question Derive the following Maxwell relation: $ \displaystyle \left.\frac{\partial P}{\partial T}\right|_{V}=\left.\frac{\partial S}{\partial V}\right|_{T} $
+
+	\begin{solution}
+	
+	\begin{center}
+	$ dA = - S dT - P d V $
+	\end{center}
+	
+	%% Use equation* for unnumbered equations, equation for numbered
+	\begin{equation*}
+	\bigg( \frac{ \partial A}{ \partial T} \bigg)_{V} = -S \quad \text{and} \quad \bigg( \frac{ \partial A}{ \partial V} \bigg)_{T} = -P
+	\end{equation*}
+	
+	Rewrite $dA$ as:
+	\begin{equation*}
+	- \bigg( \frac{ \partial A}{ \partial T} \bigg)_{V} =  - \bigg( \frac{ \partial A}{ \partial V} \bigg)_{T}
+	\end{equation*}
+	
+	\begin{equation*}
+	- \bigg( \frac{\partial^{2} A}{\partial V \partial T} \bigg) = - \bigg( \frac{\partial^{2} A}{\partial T \partial V} \bigg)
+	\end{equation*}
+	
+	\begin{equation*}
+	- \bigg( \frac{\partial^{2} A}{\partial V \partial T} \bigg) = - \frac{\partial}{\partial V} \bigg( \frac{\partial A}{\partial T} \bigg)_{V} = - \bigg( \frac{\partial S}{\partial V} \bigg)_{T}
+	\end{equation*}
+	
+	\begin{equation*}
+	- \bigg( \frac{\partial^{2} A}{\partial T \partial V} \bigg) = - \frac{\partial}{\partial T} \bigg( \frac{\partial A}{\partial V} \bigg)_{T} = - \bigg( \frac{\partial P}{\partial T} \bigg)_{V}
+	\end{equation*}
+	
+	\begin{equation*}
+	- \bigg( \frac{\partial S}{\partial V} \bigg)_{T} = - \bigg( \frac{\partial P}{\partial T} \bigg)_{V} 
+	\end{equation*}
+	
+	\begin{equation*}
+	\therefore \left.\frac{\partial P}{\partial T}\right|_{V}=\left.\frac{\partial S}{\partial V}\right|_{T}
+	\end{equation*}
+	
+	\end{solution}
+
+% \question 
+%     \begin{choices}
+% 	\choice 
+% 	\CorrectChoice 
+% 	\choice 
+% 	\choice 
+% 	\choice 
+% 	\end{choices}
+
+    % %% Explanation
+    % \begin{solution}
+    % ABC
+    % \end{solution}
+
+% \newpage
+
+\end{questions}
+
+
+\end{document}
