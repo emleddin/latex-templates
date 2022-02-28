@@ -15,6 +15,8 @@ same title and include the images.
 It is useful for making a lot of image-based comparisons.
 - `exam`: A template for multiple-choice exams.
 - `horizonatal-poster`: Sample horizontal 48x36in research poster.
+- `letter-of-rec`: Sample letter of recommendation using example-images for 
+logos.
 - `lined-CV`: A CV template with colored lines under the heading sections.
 - `lookalike-article-pub`: A template to recreate the formatting of a journal
 article. It *should not* be use to submit to a journal.

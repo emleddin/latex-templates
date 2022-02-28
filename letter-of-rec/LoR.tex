@@ -1,0 +1,141 @@
+%% Adapted from CV template by Sourabh Bajaj on ShareLaTeX
+
+\documentclass[letterpaper,12pt]{letter}
+
+\usepackage{fancyhdr}
+\usepackage[
+  textwidth=0.8\paperwidth,
+  textheight=0.7\paperheight,
+  %left=0.625in,
+  %right=0.625in,
+  %bottom=0.625in,
+  %top=0.5in,
+  includeheadfoot,   %% include header/footer
+%  includehead,   %% include header
+%  headheight=48pt, %% height for header
+  headheight=1.4in, %% height for header
+  headsep=12pt,     %% distance from the header to the text
+  footskip=24pt,    %% height for footer
+  heightrounded,     %% ensure an integer number of lines
+ ]{geometry}
+
+\usepackage{setspace}
+\usepackage[pdftex]{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+
+\renewcommand{\familydefault}{\sfdefault}	
+%\usepackage[scaled=0.94]{helvet} % For Helvetica
+\usepackage[default,oldstyle,scale=0.95]{opensans}
+\usepackage[T1]{fontenc}
+
+%\geometry{headheight = 1.3in}
+%% Letter uses First Page and Empty
+
+%\fancypagestyle{firstpage}{
+%    \fancyhf{}
+%    \fancyhead[C]{\includegraphics[height=1in, keepaspectratio=true]   {example-image-a}}
+%    \fancyfoot[C]{\textbf{Name of Company}}
+%    }
+%
+%\fancypagestyle{empty}{
+%    \fancyhf{}
+%    \fancyhead[C]{\includegraphics[height=1in, keepaspectratio=true]   {example-image-a}}
+%    \fancyfoot[C]{\textbf{Name of Company}}
+%    }
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{%
+    \begin{minipage}{\textwidth}
+    \begin{minipage}[L]{0.5\textwidth}
+    \includegraphics[height=1.5in, keepaspectratio=true]{example-image-a}
+    \end{minipage}
+    \begin{minipage}[R]{0.5\textwidth}
+    \textbf{John Smith (he/they)} \\
+    Position \\
+    E: John.Smith@example.org \\
+    C: 1.555.555.5555 \\
+    \url{https://example.org}
+    \end{minipage}
+    \end{minipage}}
+%    \includegraphics[height=1.5in, keepaspectratio=true]{example-image-a}}
+ %   \fancyhead[R]{\textbf{}}
+    \fancyfoot[C]{\textbf{Name of Company}}
+%    \fancyfoot[R]{\thepage}
+    }
+\pagestyle{plain}
+
+%% For multiple pages
+\makeatletter
+\let\ps@empty\ps@plain
+\let\ps@firstpage\ps@plain
+\makeatother
+
+%% Don't hyphenate words
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+% Fix vertical spacing
+\setlength{\parskip}{10pt}
+
+%% Change the date of the letter
+%\date{\today}
+
+%% Change name of enclosure
+%\renewcommand{\enclname}{Attached}
+
+%\renewcommand{\headrulewidth}{0pt} %% Uncomment to remove header line
+%\renewcommand{\footrulewidth}{0pt} %% Uncomment to remove footer line
+
+\urlstyle{same}
+
+%---------------------------------------------------------------------%
+%---------------------- CL STARTS HERE  -------------------%
+%---------------------------------------------------------------------%
+
+\begin{document}
+\begin{letter}{}
+
+%% Line spanning width of heading
+%\noindent\makebox[\linewidth]{\rule{0.9\paperwidth}{0.4pt}}
+
+%% Specify line spacing
+%\doublespacing
+%\onehalfspacing
+\singlespacing
+
+%-------------------- Opener
+\opening{Dear Person of Interest,}
+
+%-------------------- BODY
+I have many words to say about this person.
+
+%-------------------- Signature
+\begin{center}
+
+\closing{Sincerely,\\
+\vspace{10pt}
+%% Transparent signature
+\fromsig{\includegraphics[scale=1]{example-image-a}} \\
+\fromname{John Smith}
+}
+
+\end{center}
+
+%% To sign printed copy
+%\vspace{2\parskip}
+%\closing{Sincerely,}
+%\vspace{2\parskip}
+
+%-------------------- After-letter extras
+%\ps{PS: } %% PS
+%\encl{CV} %% Enclosed
+
+%\vspace{-48pt}
+
+\end{letter}
+
+\end{document}
