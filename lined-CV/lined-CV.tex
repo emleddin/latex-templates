@@ -10,7 +10,7 @@
 \usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage{multicol}
-% For publication list
+%% For publication list
 \usepackage[leftmargin=24pt,labelsep=10pt,topsep=0pt,itemsep=0pt,
 			partopsep=0pt,parsep=0pt]{etaremune}
 \usepackage{xcolor}
@@ -20,6 +20,7 @@
 %% Fonts		
 \renewcommand{\familydefault}{\sfdefault}	 %% For a sans serif
 \usepackage[scaled=0.94]{helvet} % For Helvetica
+\usepackage{fontawesome5} % Fontawesome (GitHub, ORCID logos)
 
 \pagestyle{fancy}
 %% Clear all header and footer fields
@@ -27,6 +28,20 @@
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+
+%% Tables on hard mode
+%% Make LaTeX accept ragged with a set width for paragraph mode
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+%% Don't hyphenate words
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
 
 %% Adjust margins
 %\addtolength{\oddsidemargin}{-0.375in}
@@ -75,12 +90,64 @@
     \end{tabular*}
 }
 
-%% Create entries for CV items
-%% Ex: {Job Title}{Location}{Company}{Dates}
-\newcommand{\CVListEntry}[4]{
+%% Create an entry for three degrees from the same university
+%% University & Location
+%% First Major & Dates
+%% Second Major & Dates
+\newcommand{\EduThreeDegrees}[8]{
     \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       {#3} & { #4} \\
+      {#5} & { #6} \\
+      {#7} & { #8} \\
+    \end{tabular*}
+}
+
+%% Create entries for CV items
+%% Ex: {Job Title}{Location}{Company}{Dates}
+\newcommand{\CVListEntry}[4]{
+    \begin{tabular*}{\textwidth}[t]{ L{4in}@{\extracolsep{\fill}}p{0.5in} }
+      \textbf{#1} & \multicolumn{1}{r}{#2} \\
+      #3          & \multicolumn{1}{r}{#4} \\
+    \end{tabular*}
+}
+
+%% Non-adaptive form (need to be conscious of line length!!!)
+%% Ex: {Job Title}{Location}{Company}{Dates}
+\newcommand{\CVListEntryNA}[4]{
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {#3} & { #4} \\
+    \end{tabular*}
+}
+
+%% Multi-line job title
+%% Ex: {Job Title}{JobTitle2}{Location}{Company}{Dates}
+\newcommand{\CVListEntryLongName}[5]{
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \\
+      \textbf{#2} & #3 \\
+      {#4} & { #5} \\
+    \end{tabular*}
+}
+
+%% Put location on its own line
+%% Ex: {Job Title}{Location}{Company}{Dates}
+\newcommand{\CVListEntryMoveTown}[4]{
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \\
+      { } & #2 \\
+      {#3} & { #4} \\
+    \end{tabular*}
+}
+
+%% Multiple sets of dates
+%% Ex: {Job Title}{Location}{Company}{Dates}
+\newcommand{\CVListEntryTwoYr}[5]{
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {#3} & { #4} \\
+      {} & { #5} \\
     \end{tabular*}
 }
 
@@ -100,6 +167,14 @@
 %% Ex: {Item}{Date}
 \newcommand{\TimeEntry}[2]{
     \item
+    \begin{tabular*}{0.975\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2
+    \end{tabular*}
+}
+
+%% One without a bullet
+\newcommand{\TimeEntryNB}[2]{
+    \item[]
     \begin{tabular*}{0.975\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2
     \end{tabular*}
@@ -144,8 +219,8 @@
     \end{minipage}% 
     \begin{minipage}[b]{0.19\textwidth}
             \flushright
-            {\href{https://github.com/example}{GitHub: example} } \\
-            \href{https://orcid.org/0000-0002-1825-0097}{ORCID: 0000-0002-1825-0097}
+            {\href{https://github.com/example}{{\Large\faGithub} example} } \\
+            \href{https://orcid.org/0000-0002-1825-0097}{{\Large\faOrcid} 0000-0002-1825-0097}
     \end{minipage}   
     
 \vspace{-0.15cm}
@@ -255,15 +330,9 @@
         \vspace{5pt}
     \CVBulletListSubEnd
 
-\CVBulletListEnd
+    \TimeEntry{The Professional League of Having Really Long Titles That Don't}{2018 -- Present}
+    \TimeEntryNB{Fit On One Line}{}
 
-%------------------ Awards and Honors
-\section{Awards and Honors}
-
-\CVBulletListStart
-    \AwardEntry{A Most Evil Scholarship}{University of Hell Horrible Department}{2019}
-    \AwardEntry{First Place Presentation}{University of Hell Horrible Department Graduate Presentation Day}{2018}
-%    \AwardEntry{}{}{}
 \CVBulletListEnd
 
 %------------------ Professional Development Coursework
@@ -276,6 +345,17 @@
     \CVBulletListSubEnd
     \AwardEntry{Crying Babies Workshop}{University of Hell}{January 2017}
     \AwardEntry{Robotic Mind Control}{Falling Star State}{February 2013}
+%    \AwardEntry{}{}{}
+\CVBulletListEnd
+
+\pagebreak
+
+%------------------ Awards and Honors
+\section{Awards and Honors}
+
+\CVBulletListStart
+    \AwardEntry{A Most Evil Scholarship}{University of Hell Horrible Department}{2019}
+    \AwardEntry{First Place Presentation}{University of Hell Horrible Department Graduate Presentation Day}{2018}
 %    \AwardEntry{}{}{}
 \CVBulletListEnd
 
